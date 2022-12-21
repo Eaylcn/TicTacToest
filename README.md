@@ -14,7 +14,7 @@ You will need the following things properly installed on your computer.
 
 ## Installation
 
-* `git clone https://github.com/feedbackfruits/ember-qa-challenge.git` this repository
+* `git clone https://github.com/Eaylcn/TicTacToest.git` this repository
 * `cd ember-qa-challenge`
 * `npm install`
 
