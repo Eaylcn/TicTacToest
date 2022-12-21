@@ -5,6 +5,9 @@ import { setupApplicationTest } from 'ember-qunit';
 module('Acceptance | tictactoe', function (hooks) {
   setupApplicationTest(hooks);
 
+  const emptyCell1 = assert.equal(getRootElement(), document.querySelector("body > div.content > div > div:nth-child(1)"));
+  const xCell1 = assert.equal(getRootElement(), document.querySelector("body > div.content > div > div.cell.x"));
+
   test('The user can access other pages from the homepage', async function (assert) {
     await visit('/');
     assert.strictEqual(currentURL(), '/', "it doesn't redirect");
@@ -27,6 +30,10 @@ module('Acceptance | tictactoe', function (hooks) {
 
   test('The user can play a game', async function (assert) {
     await visit('/game');
+    assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
+    assert.dom('data-test-game--grid').exists('it renders cells');
+    await click(emptyCell1);
+    assert.dom(xCell1).exists('game has started');
 
     // Add your tests here!
     assert.strictEqual('Good luck writing tests!', 'Good luck writing tests!');
