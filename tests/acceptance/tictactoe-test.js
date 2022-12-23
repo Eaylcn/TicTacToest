@@ -34,7 +34,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-cell-status="x"]').exists('game has started');
   });
 
-  test('while playing click instructions', async function (assert) {
+  test('The user clicks how to play button while the game is running', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="1"]');
@@ -44,7 +44,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('ol li').exists('it renders instructions');
   });
 
-  test('while playing click logo', async function (assert) {
+  test('The user clicks TicTacToe logo while the game is running', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="2"]');
@@ -53,7 +53,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/', "its homepage");
   });
 
-  test('while playing click restart', async function (assert) {
+  test('The user clicks restart button while the game is running', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="4"]');
@@ -64,7 +64,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/game', "game restarted");
   });
 
-  test('click logo after o win', async function (assert) {
+  test('The O won the game from first column - The user clicks TicTacToe logo - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="4"]');
@@ -78,7 +78,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/', "its homepage");
   });
 
-  test('click logo after x win', async function (assert) {
+  test('The X won the game from first column - The user clicks TicTacToe logo - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="0"]');
@@ -91,7 +91,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/', "its homepage");
   });
 
-  test('click logo after draw', async function (assert) {
+  test('Result of the game is a draw  - The user clicks TicTacToe logo - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="0"]');
@@ -108,7 +108,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/', "its homepage");
   });
 
-  test('click instructions after o win', async function (assert) {
+  test('The O won the game from second column - The user clicks how to play button - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="2"]');
@@ -122,7 +122,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/how-to-play', "its instructions page");
   });
 
-  test('click instructions after x win', async function (assert) {
+  test('The X won the game from second column - The user clicks how to play button - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="1"]');
@@ -135,7 +135,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/how-to-play', "its instructions page");
   });
 
-  test('click instructions after draw', async function (assert) {
+  test('Result of the game is a draw - The user clicks how to play button - The user goes to mainpage', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="1"]');
@@ -152,7 +152,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.strictEqual(currentURL(), '/how-to-play', "its instructions page");
   });
 
-  test('x win after o win', async function (assert) {
+  test('The O won the game from third column - The user clicks restart button - The X won the game from third column', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="7"]');
@@ -174,7 +174,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="x"]').exists('third column x win');
   });
 
-  test('x win after x win', async function (assert) {
+  test('The X won the game from 0-8 diagonal way - The user clicks restart button - The X won the game from 2-6 diagonal way', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="0"]');
@@ -195,7 +195,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="x"]').exists('2 - 6 diagonal x win');
   });
 
-  test('x win after draw', async function (assert) {
+  test('Result of the game is a draw - The user clicks restart button - The X won the game from first row', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="7"]');
@@ -220,7 +220,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="x"]').exists('first row x win');
   });
 
-  test('o win after x win', async function (assert) {
+  test('The X won the game from second row - The user clicks restart button - The O won the game from first row', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="3"]');
@@ -242,7 +242,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="o"]').exists('first row o win');
   });
 
-  test('o win after o win', async function (assert) {
+  test('The O won the game from 0-8 diagonal way - The user clicks restart button - The O won the game from 2-6 diagonal way', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="5"]');
@@ -265,7 +265,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="o"]').exists('2 - 6 diagonal o win');
   });
 
-  test('o win after draw', async function (assert) {
+  test('Result of the game is a draw - The user clicks restart button - The O won the game from second row', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="8"]');
@@ -291,7 +291,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--status="o"]').exists('second row o win');
   });
 
-  test('draw after draw', async function (assert) {
+  test('Result of the game is a draw - The user clicks restart button - Result of the game is a draw', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="3"]');
@@ -320,7 +320,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--grid-active="inactive"]').exists('game is draw and inactive');
   });
 
-  test('draw after o win', async function (assert) {
+  test('The O won the game from third row - The user clicks restart button - Result of the game is a draw', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="1"]');
@@ -346,7 +346,7 @@ module('Acceptance | tictactoe', function (hooks) {
     assert.dom('[data-test-game--grid-active="inactive"]').exists('game is draw and inactive');
   });
 
-  test('draw after x win', async function (assert) {
+  test('The X won the game from third row - The user clicks restart button - Result of the game is a draw', async function (assert) {
     await visit('/game');
     assert.strictEqual(currentURL(), '/game', "it doesn't redirect");
     await click('[data-test-cell-id="6"]');
